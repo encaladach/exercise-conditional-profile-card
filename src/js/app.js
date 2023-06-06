@@ -29,18 +29,45 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  if (variables.name == null) variables.name == "Name";
+  if (variables.lastname == null) variables.lastname = "LastName";
+
+  if (variables.twitter != null) variables.twitter;
+  if (variables.github != null) variables.github;
+  if (variables.linkedin != null) variables.linkedin;
+  if (variables.instagram != null) variables.instagram;
+
+  let userRole = "<h2>Web Developer</h2>";
+  if (variables.role == "Musician") userRole = "<h2>Musician</h2>";
+  else if (variables.role == "Clinical Psychologist")
+    userRole = "<h2>Clinical Psychologist</h2>";
+  else if (variables.role == null) userRole = "<h2>Role</h2>";
+
+  if (variables.country == null) variables.country = "Country";
+  else if (variables.country == "Ecuador") variables.country = "Ecuador";
+  else if (variables.country == "USA") variables.country = "USA";
+  else if (variables.country == "Switzerland")
+    variables.country = "Switzerland";
+  else if (variables.country == "Switzerland") variables.country = "USA";
+
+  if (variables.city == null) variables.city = "city";
+  else if (variables.city == "Guayaquil") variables.city = "Guayaquil";
+  else if (variables.city == "Miami") variables.city = "Miami";
+  else if (variables.city == "Basel") variables.city = "Basel";
+  else if (variables.city == "Phoenix") variables.city = "Phoenix";
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${variables.name} ${variables.lastname}</h1>
+          <h2>${variables.role}</h2>
+          <h3>${variables.city} ${variables.country}</h3>
+          <ul class=${variables.SocialMediaPosition}">
+            <li><a href="https://twitter.com/${variables.twitter}><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${variables.github}><i class="fab fa-github"></i></a></li>
+            <li><a href="https://linkedin.com${variables.linkedin}><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com${variables.instagram}><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
